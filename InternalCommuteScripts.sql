@@ -14,12 +14,16 @@ CREATE TABLE `internalcommute`.`users` (
   `availableSeats` VARCHAR(45) NULL,
   PRIMARY KEY (`userId`, `email`, `mobileNumber`));
                
+   
   CREATE TABLE `internalcommute`.`rides` (
-  `rideId` INT NOT NULL,
-  `userId` VARCHAR(45) NOT NULL,
-  `vehicle` VARCHAR(45) NOT NULL,
-  `availableSeats` VARCHAR(45) NOT NULL,
-  `vehicleNumber` VARCHAR(45) NOT NULL,
-  `rideDate` DATETIME NOT NULL,
-  `rideTime` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`rideId`));
+  `ride_id` INT NOT NULL,
+  `user_id` VARCHAR(45) NULL,
+  `vehicle` VARCHAR(45) NULL,
+  `available_seats` VARCHAR(45) NULL,
+  `vehicle_number` VARCHAR(45) NULL,
+  `ride_date` DATETIME NULL,
+  `ride_time` VARCHAR(45) NULL,
+  PRIMARY KEY (`ride_id`));
+  
+  ALTER TABLE `internalcommute`.`rides` 
+CHANGE COLUMN `ride_id` `ride_id` INT(11) NOT NULL AUTO_INCREMENT ;
