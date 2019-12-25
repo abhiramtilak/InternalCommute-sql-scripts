@@ -25,5 +25,9 @@ CREATE TABLE `internalcommute`.`users` (
   `ride_time` VARCHAR(45) NULL,
   PRIMARY KEY (`ride_id`));
   
+  ALTER TABLE `internalcommute`.`rides` CHANGE COLUMN `ride_id` `ride_id` INT(11) NOT NULL AUTO_INCREMENT ;
+
+               
   ALTER TABLE `internalcommute`.`rides` 
-CHANGE COLUMN `ride_id` `ride_id` INT(11) NOT NULL AUTO_INCREMENT ;
+  ADD COLUMN `from_address` VARCHAR(45) NULL AFTER `ride_time`,
+  ADD COLUMN `to_address` VARCHAR(45) NULL AFTER `from_address`;
