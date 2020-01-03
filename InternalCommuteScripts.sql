@@ -31,3 +31,25 @@ CREATE TABLE `internalcommute`.`users` (
   ALTER TABLE `internalcommute`.`rides` 
   ADD COLUMN `from_address` VARCHAR(45) NULL AFTER `ride_time`,
   ADD COLUMN `to_address` VARCHAR(45) NULL AFTER `from_address`;
+               
+  CREATE TABLE `internalcommute`.`ride_requests` (
+  `request_id` INT NOT NULL,
+  `rider_id` VARCHAR(45) NULL,
+  `ride_taker_id` VARCHAR(45) NULL,
+  `ride_id` INT NULL,
+  `status` VARCHAR(45) NULL,
+  PRIMARY KEY (`request_id`),
+  INDEX `ride_id_idx` (`ride_id` ASC),
+  CONSTRAINT `ride_id`
+    FOREIGN KEY (`ride_id`)
+    REFERENCES `internalcommute`.`rides` (`ride_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+ALTER TABLE `internalcommute`.`rides` 
+ADD COLUMN `cancelled` TINYINT NULL DEFAULT 0 AFTER `to_address`;
+
+
+ALTER TABLE `internalcommute`.`ride_requests` 
+CHANGE COLUMN `request_id` `request_id` INT(11) NOT NULL AUTO_INCREMENT ;
+
